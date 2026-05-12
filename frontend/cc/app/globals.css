@@ -1,0 +1,142 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+  AirTravel Design System
+  ─────────────────────────────────────────────────
+  Domain: Aviation / Passenger Travel
+  Color World: Midnight sky navy, luminous sky-blue,
+               contrail white, tarmac charcoal, runway amber
+  Depth: Borders-only on dark canvas; subtle shadow on cards
+  Signature: Boarding-pass card with dashed perforation
+*/
+
+:root {
+  /* Canvas & Surfaces */
+  --sky-midnight:  #0B1A2E;   /* page canvas */
+  --sky-deep:      #0F2340;   /* sidebar / nav */
+  --sky-panel:     #162E50;   /* elevated panels */
+  --sky-card:      #1A3660;   /* card surface */
+  --sky-lift:      #1F3E6E;   /* card hover / dropdown */
+
+  /* Border Progression */
+  --border-subtle:  rgba(255,255,255,0.06);
+  --border-default: rgba(255,255,255,0.10);
+  --border-strong:  rgba(255,255,255,0.18);
+  --border-focus:   #3B8BEB;
+
+  /* Accent – luminous sky blue */
+  --accent-sky:     #3B8BEB;
+  --accent-sky-dim: rgba(59,139,235,0.15);
+  --accent-sky-glow:rgba(59,139,235,0.30);
+
+  /* Route amber – gate signage */
+  --amber-route: #F59E0B;
+
+  /* Status */
+  --status-confirmed: #10B981;
+  --status-cancelled:  #EF4444;
+  --status-pending:    #F59E0B;
+
+  /* Text Hierarchy */
+  --text-primary:   #F0F6FF;   /* headlines */
+  --text-secondary: #A8C0DC;   /* supporting */
+  --text-tertiary:  #5E7A9A;   /* metadata */
+  --text-muted:     #384F69;   /* disabled / placeholder */
+
+  /* Control Surfaces */
+  --control-bg:     #0F2340;
+  --control-border: rgba(255,255,255,0.12);
+
+  /* Semantic tokens (shadcn compat) */
+  --background:         var(--sky-midnight);
+  --foreground:         var(--text-primary);
+  --card:               var(--sky-card);
+  --card-foreground:    var(--text-primary);
+  --popover:            var(--sky-panel);
+  --popover-foreground: var(--text-primary);
+  --primary:            var(--accent-sky);
+  --primary-foreground: #ffffff;
+  --secondary:          var(--sky-panel);
+  --secondary-foreground: var(--text-primary);
+  --muted:              var(--sky-panel);
+  --muted-foreground:   var(--text-tertiary);
+  --accent:             var(--sky-panel);
+  --accent-foreground:  var(--text-primary);
+  --destructive:        var(--status-cancelled);
+  --destructive-foreground: #ffffff;
+  --border:             var(--border-default);
+  --input:              var(--control-bg);
+  --ring:               var(--border-focus);
+  --radius: 0.625rem;
+
+  /* Sidebar tokens */
+  --sidebar:                    var(--sky-deep);
+  --sidebar-foreground:         var(--text-primary);
+  --sidebar-primary:            var(--accent-sky);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent:             var(--sky-panel);
+  --sidebar-accent-foreground:  var(--text-primary);
+  --sidebar-border:             var(--border-subtle);
+  --sidebar-ring:               var(--border-focus);
+}
+
+@theme inline {
+  --font-sans: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
+  --font-mono: 'Space Mono', 'Space Mono Fallback', monospace;
+
+  --color-background:          var(--background);
+  --color-foreground:          var(--foreground);
+  --color-card:                var(--card);
+  --color-card-foreground:     var(--card-foreground);
+  --color-popover:             var(--popover);
+  --color-popover-foreground:  var(--popover-foreground);
+  --color-primary:             var(--primary);
+  --color-primary-foreground:  var(--primary-foreground);
+  --color-secondary:           var(--secondary);
+  --color-secondary-foreground:var(--secondary-foreground);
+  --color-muted:               var(--muted);
+  --color-muted-foreground:    var(--muted-foreground);
+  --color-accent:              var(--accent);
+  --color-accent-foreground:   var(--accent-foreground);
+  --color-destructive:         var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border:              var(--border);
+  --color-input:               var(--input);
+  --color-ring:                var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-sidebar:                    var(--sidebar);
+  --color-sidebar-foreground:         var(--sidebar-foreground);
+  --color-sidebar-primary:            var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent:             var(--sidebar-accent);
+  --color-sidebar-accent-foreground:  var(--sidebar-accent-foreground);
+  --color-sidebar-border:             var(--sidebar-border);
+  --color-sidebar-ring:               var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Boarding-pass perforation dashes */
+  .perforation {
+    border-left: 2px dashed rgba(255,255,255,0.12);
+  }
+
+  /* Scrollbar – thin & tinted */
+  ::-webkit-scrollbar        { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track  { background: transparent; }
+  ::-webkit-scrollbar-thumb  { background: var(--border-strong); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--accent-sky); }
+}

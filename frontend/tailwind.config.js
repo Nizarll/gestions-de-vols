@@ -1,0 +1,5 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  // Tailwind v4 uses CSS-based configuration
+  // Content paths are auto-detected from your imports
+}
